@@ -21,9 +21,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $isProduction = Config::get('app.env') === 'production' || str_starts_with((string) Config::get('app.url'), 'https://');
+        $isHttps = Config::get('app.env') === 'production'
+            || str_starts_with((string) Config::get('app.url'), 'https://')
+            || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https')
+            || (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off');
 
-        if ($isProduction) {
+        if ($isHttps) {
             URL::forceScheme('https');
         }
     }

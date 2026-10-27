@@ -22,7 +22,7 @@
 
 
 <script>
-const bulkSupplierUrl = "{{ url('/evaluations/bulk-suppliers') }}";
+const bulkSupplierUrl = '/evaluations/bulk-suppliers';
 
 window.openBulkEvaluateModal = function () {
     document.getElementById('bulkEvaluateModal').classList.remove('hidden');
