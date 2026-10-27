@@ -44,7 +44,7 @@
 
 @include('layouts.loading')
 
-<script src="{{asset('script/block.js')}}"></script>
+{{-- <script src="{{asset('script/block.js')}}"></script> --}}
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
